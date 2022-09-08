@@ -1,35 +1,15 @@
 import 'package:flutter/material.dart';
 
+/// Custom color class for multiple theme color
 class CustomSheetColor {
   Color mainColor;
   Color accentColor;
   Color iconColor;
 
   CustomSheetColor(
-      {required this.mainColor, required this.accentColor, required this.iconColor});
-}
-
-class AwesomeSheetColors {
-  static CustomSheetColor danger = CustomSheetColor(
-    mainColor: const Color(0xffEF5350),
-    accentColor: const Color(0xffD32F2F),
-    iconColor: Colors.white,
-  );
-  static CustomSheetColor success = CustomSheetColor(
-    mainColor: const Color(0xff009688),
-    accentColor: const Color(0xff00695C),
-    iconColor: Colors.white,
-  );
-  static CustomSheetColor warning = CustomSheetColor(
-    mainColor: const Color(0xffFF8C00),
-    accentColor: const Color(0xffF55932),
-    iconColor: Colors.white,
-  );
-  static CustomSheetColor nice = CustomSheetColor(
-    mainColor: const Color(0xff2979FF),
-    accentColor: const Color(0xff0D47A1),
-    iconColor: Colors.white,
-  );
+      {required this.mainColor,
+      required this.accentColor,
+      required this.iconColor});
 }
 
 class AwesomeBottomSheet {
@@ -39,13 +19,13 @@ class AwesomeBottomSheet {
     required Text description,
     required CustomSheetColor color,
     required AwesomeSheetAction positive,
-    EdgeInsets? contentPadding = const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+    EdgeInsets? contentPadding =
+        const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
     EdgeInsets? actionPadding = const EdgeInsets.all(8.0),
     AwesomeSheetAction? negative,
     IconData? icon,
     double iconSize = 52,
     double titleFontSize = 24,
-
     double descriptionFontSize = 18,
     String fontFamily = 'circular',
     bool useRootNavigator = false,
@@ -83,15 +63,16 @@ class AwesomeBottomSheet {
                     title == null
                         ? Container()
                         : DefaultTextStyle(
-                        style: TextStyle(
-                          fontSize: titleFontSize,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: fontFamily,
-                        ),
-                        textAlign: TextAlign.start,
-                        child: title),
-                    _buildContent(color, description, icon,fontFamily,descriptionFontSize,iconSize)
+                            style: TextStyle(
+                              fontSize: titleFontSize,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: fontFamily,
+                            ),
+                            textAlign: TextAlign.start,
+                            child: title),
+                    _buildContent(color, description, icon, fontFamily,
+                        descriptionFontSize, iconSize)
                   ],
                 ),
               ),
@@ -110,45 +91,48 @@ class AwesomeBottomSheet {
     );
   }
 
-  _buildContent(CustomSheetColor color, Text description, IconData? icon,String fontFamily, double descriptionFontSize,double iconSize) {
+  /// return content widget
+  _buildContent(CustomSheetColor color, Text description, IconData? icon,
+      String fontFamily, double descriptionFontSize, double iconSize) {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: SingleChildScrollView(
         child: icon != null
             ? Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: DefaultTextStyle(
-                  style: TextStyle(
-                      fontSize: descriptionFontSize,
-                      color: Colors.white,
-                      fontFamily: fontFamily),
-                  child: description),
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            Icon(
-              icon,
-              size: iconSize,
-              color: color.iconColor,
-            )
-          ],
-        ) :
-        DefaultTextStyle(
-          style: TextStyle(
-            fontSize: descriptionFontSize,
-            fontFamily: fontFamily,
-            color: Colors.white,
-          ),
-          child: description,
-        ),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: DefaultTextStyle(
+                        style: TextStyle(
+                            fontSize: descriptionFontSize,
+                            color: Colors.white,
+                            fontFamily: fontFamily),
+                        child: description),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Icon(
+                    icon,
+                    size: iconSize,
+                    color: color.iconColor,
+                  )
+                ],
+              )
+            : DefaultTextStyle(
+                style: TextStyle(
+                  fontSize: descriptionFontSize,
+                  fontFamily: fontFamily,
+                  color: Colors.white,
+                ),
+                child: description,
+              ),
       ),
     );
   }
 
+  /// action widget
   _buildActions(AwesomeSheetAction? positive, AwesomeSheetAction? negative) {
     List<AwesomeSheetAction> actions = [];
 
@@ -166,6 +150,8 @@ class AwesomeBottomSheet {
   }
 }
 
+/// action button widget
+
 class AwesomeSheetAction extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
@@ -173,7 +159,8 @@ class AwesomeSheetAction extends StatelessWidget {
   final Color color;
   VoidCallback? onLongPress;
 
-  AwesomeSheetAction({Key? key,
+  AwesomeSheetAction({
+    Key? key,
     required this.title,
     required this.onPressed,
     this.onLongPress,
@@ -183,30 +170,30 @@ class AwesomeSheetAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return icon == null ?
-    TextButton(
-      onPressed: onPressed,
-      onLongPress: onLongPress,
-      child: Text(
-        title,
-        style: TextStyle(
-          color: color,
-        ),
-      ),
-    ) :
-    TextButton.icon(
-      onPressed: onPressed,
-      onLongPress: onLongPress,
-      label: Text(
-        title,
-        style: TextStyle(
-          color: color,
-        ),
-      ),
-      icon: Icon(
-        icon,
-        color: color,
-      ),
-    );
+    return icon == null
+        ? TextButton(
+            onPressed: onPressed,
+            onLongPress: onLongPress,
+            child: Text(
+              title,
+              style: TextStyle(
+                color: color,
+              ),
+            ),
+          )
+        : TextButton.icon(
+            onPressed: onPressed,
+            onLongPress: onLongPress,
+            label: Text(
+              title,
+              style: TextStyle(
+                color: color,
+              ),
+            ),
+            icon: Icon(
+              icon,
+              color: color,
+            ),
+          );
   }
 }

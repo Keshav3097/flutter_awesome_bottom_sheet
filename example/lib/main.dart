@@ -15,23 +15,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           brightness: Brightness.dark,
           primarySwatch: Colors.blue,
-          useMaterial3: true
-      ),
-      home: HomePage(title: 'Awesome Bottom Sheet'),
+          useMaterial3: true),
+      home: const HomePage(title: 'Awesome Bottom Sheet'),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
   final String title;
-  HomePage({required this.title});
+  const HomePage({Key? key,required this.title}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-
+class HomePageState extends State<HomePage> {
+  ///Object declaration
   final AwesomeBottomSheet _awesomeBottomSheet = AwesomeBottomSheet();
 
   @override
@@ -44,9 +43,10 @@ class _HomePageState extends State<HomePage> {
       body: SizedBox(
         child: ListView(
           children: <Widget>[
-
-            const SizedBox(height: 10,),
-
+            const SizedBox(
+              height: 10,
+            ),
+            ///Simple Awesome Sheet
             BuildButton(
               context: context,
               text: 'Simple Awesome Sheet',
@@ -54,7 +54,8 @@ class _HomePageState extends State<HomePage> {
                 _awesomeBottomSheet.show(
                   context: context,
                   title: const Text("Lorem Ipsum"),
-                  description: const Text("Flutter Awesome Bottom sheet content here..."),
+                  description: const Text(
+                      "Flutter Awesome Bottom sheet content here..."),
                   color: CustomSheetColor(
                     mainColor: const Color(0xff2979FF),
                     accentColor: const Color(0xff0D47A1),
@@ -69,6 +70,8 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
+
+            ///Action Awesome Sheet
             BuildButton(
               context: context,
               text: 'Action Awesome Sheet',
@@ -77,8 +80,8 @@ class _HomePageState extends State<HomePage> {
                   isDismissible: false,
                   context: context,
                   title: const Text("Delete this post?"),
-                  description:
-                  const Text("This action will permanently delete this post."),
+                  description: const Text(
+                      "This action will permanently delete this post."),
                   color: CustomSheetColor(
                     mainColor: const Color(0xfff33838),
                     accentColor: const Color(0xffab1d1d),
@@ -100,6 +103,10 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
+
+
+            ///Icon Awesome Sheet
+
             BuildButton(
               context: context,
               text: 'Icon Awesome Sheet',
@@ -107,7 +114,8 @@ class _HomePageState extends State<HomePage> {
                 _awesomeBottomSheet.show(
                   context: context,
                   title: const Text("Attention"),
-                  description: const Text('Your app is not connected to internet actually, please turn on Wifi/Cellular data.'),
+                  description: const Text(
+                      'Your app is not connected to internet actually, please turn on Wifi/Cellular data.'),
                   color: CustomSheetColor(
                     mainColor: const Color(0xff2979FF),
                     accentColor: const Color(0xff0D47A1),
@@ -137,6 +145,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+///Create Button widget for multiple usage
 class BuildButton extends StatelessWidget {
   final BuildContext context;
   final String text;
