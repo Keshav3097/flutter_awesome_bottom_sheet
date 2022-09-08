@@ -16,7 +16,7 @@
 
 ## Installation
 
-Add `flutter_awesome_bottom_sheet: <later-version>` to your `pubspec.yaml` dependencies. And import it:
+Add ```flutter_awesome_bottom_sheet: <later-version>``` to your `pubspec.yaml` dependencies. And import it:
 
 ```
 import 'package:flutter_awesome_bottom_sheet/flutter_awesome_bottom_sheet.dart';
