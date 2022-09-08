@@ -56,7 +56,7 @@ Simple Awesome Sheet
 ## Add Buttons
 
 ```
- _sweetSheet.show(
+ _awesomeBottomSheet.show(
      ...
       positive: AwesomeSheetAction(
         onPressed: () {
@@ -77,7 +77,7 @@ Add Icons in content and action button
 
 ```
 
- _sweetSheet.show(
+ _awesomeBottomSheet.show(
      ...
       icon: Icons.signal_cellular_connected_no_internet_4_bar,
       positive: AwesomeSheetAction(
@@ -100,7 +100,7 @@ Add Icons in content and action button
 ## Custom color
 
 ```
- _sweetSheet.show(
+ _awesomeBottomSheet.show(
       ...
       color: CustomSheetColor(
         mainColor: Colors.white,
@@ -114,5 +114,5 @@ Add Icons in content and action button
 ## Screenshot
 |             Simple             |             Action             |             Icon             |
 | :----------------------------: | :----------------------------: | :-------------------: |
-| ![simple](simple.png) | ![action](action.png) | ![icon](icon.png) |
+| ![simple](simple.png)          | ![action](action.png)          | ![icon](icon.png) |
 
